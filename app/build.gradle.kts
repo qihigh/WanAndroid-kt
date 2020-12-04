@@ -22,6 +22,8 @@ android {
         versionCode(1)
         versionName("1.0.0")
 
+        buildConfigField("String","APP_UMENG_KEY","\"5f4737cc97106e71f6e1bd2c\"")
+
         ndk {
             abiFilters.add("armeabi-v7a")
             abiFilters.add("arm64-v8a")
@@ -99,6 +101,19 @@ dependencies {
     implementationExt("androidXConstraintLayout")
     implementationExt("androidXLifecycleLivedata")
     implementationExt("androidXLifecycleViewModel")
+    implementationExt("libRxJava")
+    implementationExt("libRxAndroid")
+//    implementationExt("libRxPermissions")
+    implementationExt("libRetrofit")
+    implementationExt("libRetrofit")
+    implementationExt("libUmCommon")
+    implementationExt("libUmAsms")
+    implementationExt("libUmCrash")
+    implementationExt("libDagger")
+    kapt(ext("libDaggerCompiler"))
+    implementationExt("libMoshi")
+
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")

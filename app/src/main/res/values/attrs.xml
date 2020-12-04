@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ERecyclerView">
+        <attr name="eRecycler_layout_empty" format="reference" />
+        <attr name="eRecycler_layout_placeholder" format="reference" />
+        <attr name="eRecycler_layout_error" format="reference" />
+        <attr name="eRecycler_ClipToPadding" format="boolean" />
+        <attr name="eRecycler_Padding" format="dimension" />
+        <attr name="eRecycler_PaddingTop" format="dimension" />
+        <attr name="eRecycler_PaddingBottom" format="dimension" />
+        <attr name="eRecycler_PaddingLeft" format="dimension" />
+        <attr name="eRecycler_PaddingRight" format="dimension" />
+        <attr name="eRecycler_nestScroll" format="boolean" />
+        <attr name="eRecycler_scrollbarStyle">
+            <enum name="insideOverlay" value="0x0" />
+            <enum name="insideInset" value="0x01000000" />
+            <enum name="outsideOverlay" value="0x02000000" />
+            <enum name="outsideInset" value="0x03000000" />
+        </attr>
+        <attr name="eRecycler_scrollbars">
+            <enum name="vertical" value="1" />
+            <enum name="horizontal" value="0" />
+            <enum name="none" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

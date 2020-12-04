@@ -32,6 +32,7 @@ subprojects {
         maven("http://maven.aliyun.com/nexus/content/repositories/jcenter")
         //对应google
         maven("https://maven.aliyun.com/repository/google")
+        maven("https://dl.bintray.com/umsdk/release")
     }
 
     /**
@@ -65,7 +66,7 @@ subprojects {
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
             // Treat all Kotlin warnings as errors
-            allWarningsAsErrors = true
+            allWarningsAsErrors = false
 
             jvmTarget = "1.8"//JavaVersion.VERSION_1_8.name
             // 优化kotlin编译后的自动校验代码. [https://juejin.im/post/5e1c6163f265da3e4736b37f]
