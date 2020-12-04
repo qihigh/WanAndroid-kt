@@ -1,8 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-import com.qihuan.buildsrc.Libs
-
-
 buildscript {
+    val kotlin_version = "1.4.20"
     repositories {
         mavenLocal()
         maven("https://dl.bintray.com/thelasterstar/maven/")
@@ -12,8 +10,8 @@ buildscript {
         maven("https://maven.aliyun.com/repository/google")
     }
     dependencies {
-        classpath(Libs.androidGradlePlugin)
-        classpath(Libs.Kotlin.gradlePlugin)
+        classpath("com.android.tools.build:gradle:4.2.0-alpha16")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -33,7 +31,3 @@ allprojects {
 tasks.withType(JavaCompile::class) {
     options.encoding = "UTF-8"
 }
-
-//task clean (type: Delete) {
-//    delete rootProject . buildDir
-//}
