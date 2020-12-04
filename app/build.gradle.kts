@@ -1,27 +1,56 @@
 plugins {
     id("com.android.application")
-    id("kotlin-android")
+    kotlin("android")
+    kotlin("kapt")
+}
+
+fun ext(name: String): String {
+    return project.property(name) as String
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdkVersion(ext("compileSdkVersion"))
 
     defaultConfig {
         applicationId("com.qihuan.wanandroid")
-        minSdkVersion(21)
-        targetSdkVersion(30)
+        minSdkVersion(ext("minSdkVersion"))
+        targetSdkVersion(ext("targetSdkVersion"))
         versionCode(1)
-        versionName("1.0")
+        versionName("1.0.0")
+
+        ndk {
+            abiFilters.add("armeabi-v7a")
+            abiFilters.add("arm64-v8a")
+        }
 
         testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
     }
 
+    sourceSets {
+        findByName("main")?.apply {
+            java.srcDirs("src/main/kotlin")
+            java.srcDirs("src/main/base")
+        }
+    }
+
+    signingConfigs {
+        create("myConfig") {
+            storeFile = file("mysign.jks")
+            storePassword = "qihuan"
+            keyAlias = "qihuan"
+            keyPassword = "qihuan"
+        }
+    }
+
+
     buildTypes {
         getByName("release") {
+            signingConfig = signingConfigs.getByName("myConfig")
             minifyEnabled(false)
             proguardFiles("proguard-rules.pro")
         }
         getByName("debug") {
+            signingConfig = signingConfigs.getByName("myConfig")
             minifyEnabled(false)
             proguardFiles("proguard-rules.pro")
         }
@@ -31,19 +60,39 @@ android {
         targetCompatibility(JavaVersion.VERSION_1_8)
     }
 
+    lintOptions {
+        isAbortOnError = false
+        isCheckReleaseBuilds = false
+        disable(
+            "MissingTranslation",
+            "StringFormatCount",
+            "IconDipSize",
+            "SmallSp",
+            "ContentDescription",
+            "SetTextI18n",
+            "HardcodedText",
+            "RtlHardcoded",
+            "Typos"
+        )
+    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
 }
 
+
+
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.20")
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("com.google.android.material:material:1.2.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:${ext("kotlinVersion")}")
+    implementation(ext("androidXCore"))
+    implementation(ext("androidXAppcompat"))
+    implementation(ext("androidXMaterial"))
+    implementation(ext("androidXConstraintLayout"))
+    implementation(ext("androidXLifecycleLivedata"))
+    implementation(ext("androidXLifecycleViewModel"))
+
+
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")

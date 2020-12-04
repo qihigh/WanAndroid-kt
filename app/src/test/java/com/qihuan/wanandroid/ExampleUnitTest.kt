@@ -1,8 +1,8 @@
+/* (C)2020 */
 package com.qihuan.wanandroid
 
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).
