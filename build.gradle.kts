@@ -1,4 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
 buildscript {
     // kts 从gradle5.6以后的版本开始不再支持buildSrc，这里退而采用properties的方式来定义共用的值
     val kotlinVersion: String by project
@@ -22,6 +23,8 @@ buildscript {
 
 plugins {
     id("com.diffplug.spotless").version("5.7.0")
+    //启用自定义插件，引入通用版本信息 只有subprojects可以引用
+    id("com.qihuan.versionplugin").apply(false)
 }
 
 subprojects {
@@ -40,8 +43,9 @@ subprojects {
      */
     apply {
         plugin("com.diffplug.spotless")
+        plugin("com.qihuan.versionplugin")
     }
-    val ktLintVersion: String by project
+
     configure<com.diffplug.gradle.spotless.SpotlessExtension> {
         format("misc") {
             target("*.kt", "*.md")
@@ -57,7 +61,7 @@ subprojects {
             targetExclude("$buildDir/**/*.kt")
             targetExclude("bin/**/*.kt")
 
-            ktlint(ktLintVersion)
+            ktlint(com.qihuan.versionplugin.Ext.Versions.ktLintVersion)
             // 添加header
             licenseHeader("/* (C)2020 */")
         }

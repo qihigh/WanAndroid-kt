@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import com.qihuan.wanandroid.LogUtil
+import com.qihuan.wanandroid.app.LogUtil
 import com.qihuan.wanandroid.eRecycle.EDataObserver.Companion.OMIT_FOOTER_CHANGE
 
 /**

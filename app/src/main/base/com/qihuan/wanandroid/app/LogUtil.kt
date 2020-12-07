@@ -1,7 +1,8 @@
 /* (C)2020 */
-package com.qihuan.wanandroid
+package com.qihuan.wanandroid.app
 
 import android.util.Log
+import com.qihuan.wanandroid.BuildConfig
 
 /**
  * <p/>Created by 齐欢 on 2019/3/21.
@@ -10,9 +11,9 @@ import android.util.Log
 object LogUtil {
     fun getMethodNames(sElements: Array<StackTraceElement>): Triple<String, String, Int> {
         return Triple<String, String, Int>(
-            sElements[1].fileName,
-            sElements[1].methodName,
-            sElements[1].lineNumber
+            sElements[0].fileName,
+            sElements[0].methodName,
+            sElements[0].lineNumber
         )
     }
 

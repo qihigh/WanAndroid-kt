@@ -4,7 +4,7 @@ package com.qihuan.wanandroid.eRecycle
 import android.util.Log
 import androidx.annotation.CallSuper
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
-import com.qihuan.wanandroid.LogUtil
+import com.qihuan.wanandroid.app.LogUtil
 
 /**
  * 监听数据集合的变化，决定是否展示 emptyView

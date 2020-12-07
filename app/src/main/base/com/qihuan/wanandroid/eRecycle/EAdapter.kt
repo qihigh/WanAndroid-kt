@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListUpdateCallback
 import androidx.recyclerview.widget.RecyclerView
 import com.qihuan.wanandroid.BuildConfig
-import com.qihuan.wanandroid.LogUtil
+import com.qihuan.wanandroid.app.LogUtil
 import java.lang.ref.WeakReference
 import kotlin.IllegalArgumentException
 

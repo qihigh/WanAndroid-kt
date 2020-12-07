@@ -3,7 +3,7 @@ package com.qihuan.wanandroid.eRecycle
 
 import android.view.View
 import androidx.annotation.LayoutRes
-import com.qihuan.wanandroid.LogUtil
+import com.qihuan.wanandroid.app.LogUtil
 
 /**
  * 默认的eventDelegate。控制loadMore的相关事件，包括loadMore、NoMore、loadMoreError。

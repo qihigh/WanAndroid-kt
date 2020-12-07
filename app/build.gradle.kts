@@ -1,28 +1,23 @@
+import com.qihuan.versionplugin.Ext.Versions
+import com.qihuan.versionplugin.Ext.Libs
+
 plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
 }
 
-/**
- * 从properties文件中读取数据
- *
- * kts 从gradle5.6以后的版本开始不再支持buildSrc，这里退而采用properties的方式来定义共用的值
- */
-fun ext(name: String): String = project.property(name) as String
-
-
 android {
-    compileSdkVersion(ext("compileSdkVersion"))
+    compileSdkVersion(Versions.compileSdkVersion)
 
     defaultConfig {
         applicationId("com.qihuan.wanandroid")
-        minSdkVersion(ext("minSdkVersion"))
-        targetSdkVersion(ext("targetSdkVersion"))
+        minSdkVersion(Versions.minSdkVersion)
+        targetSdkVersion(Versions.targetSdkVersion)
         versionCode(1)
         versionName("1.0.0")
 
-        buildConfigField("String","APP_UMENG_KEY","\"5f4737cc97106e71f6e1bd2c\"")
+        buildConfigField("String", "APP_UMENG_KEY", "\"5f4737cc97106e71f6e1bd2c\"")
 
         ndk {
             abiFilters.add("armeabi-v7a")
@@ -40,7 +35,7 @@ android {
     }
 
     signingConfigs {
-        val sign = ext("sign")
+        val sign: String by project
         create("myConfig") {
             storeFile = file("mysign.jks")
             storePassword = sign
@@ -82,38 +77,37 @@ android {
             "Typos"
         )
     }
-
-
 }
-
-/**
- * 拓展 dependencies
- */
-fun DependencyHandler.implementationExt(name: String): Dependency? =
-    add("implementation", ext(name))
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${ext("kotlinVersion")}")
-    implementationExt("androidXCore")
-    implementationExt("androidXAppcompat")
-    implementationExt("androidXMaterial")
-    implementationExt("androidXConstraintLayout")
-    implementationExt("androidXLifecycleLivedata")
-    implementationExt("androidXLifecycleViewModel")
-    implementationExt("libRxJava")
-    implementationExt("libRxAndroid")
-//    implementationExt("libRxPermissions")
-    implementationExt("libRetrofit")
-    implementationExt("libRetrofit")
-    implementationExt("libUmCommon")
-    implementationExt("libUmAsms")
-    implementationExt("libUmCrash")
-    implementationExt("libDagger")
-    kapt(ext("libDaggerCompiler"))
-    implementationExt("libMoshi")
+    implementation(Libs.kotlin)
+    implementation(Libs.AndroidX.Core)
+    implementation(Libs.AndroidX.Appcompat)
+    implementation(Libs.AndroidX.Material)
+    implementation(Libs.AndroidX.ConstraintLayout)
+    implementation(Libs.AndroidX.LifecycleLivedata)
+    implementation(Libs.AndroidX.LifecycleViewModel)
+    implementation(Libs.AndroidX.SwipeRefreshLayout)
 
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation(Libs.RxJava)
+    implementation(Libs.RxAndroid)
+//    implementation(Libs.RxPermissions)
+    implementation(Libs.Glide)
+    implementation(Libs.Mmkv)
+    implementation(Libs.ButterKnife)
+    kapt(Libs.ButterKnifeCompiler)
+    implementation(Libs.UmCommon)
+    implementation(Libs.UmAsms)
+    implementation(Libs.UmCrash)
+    implementation(Libs.Dagger)
+    kapt(Libs.DaggerCompiler)
+    implementation(Libs.Moshi)
+    kapt(Libs.MoshiCodegen)
+    implementation(Libs.Retrofit)
+    implementation(Libs.MoshiConverter)
+    implementation(Libs.RxJavaAdapter)
+
 
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
