@@ -25,7 +25,6 @@ class JsonUtil @Inject constructor(val _moshi: Moshi) {
         ).toJson(vo)
     }
 
-
     inline fun <reified T> fromJson(json: String, vararg typeArguments: Type): T? {
         if (T::class.java == String::class.java) {
             return json as T

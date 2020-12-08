@@ -1,3 +1,4 @@
+/* (C)2020 */
 package com.qihuan.wanandroid.network
 
 import com.qihuan.wanandroid.model.ApiResponse
@@ -32,24 +33,15 @@ sealed class RetrofitApi {
             @Field("repassword") rePassword: String
         ): Observable<ApiResponse<UserInfo>>
 
-
         @GET("user/logout/json")
         fun logout(): Observable<ApiResponse<String>>
     }
 
-    interface ProjectApi {
+    interface ProjectApi
 
-    }
+    interface TreeApi
 
-    interface TreeApi {
+    interface ArticleApi
 
-    }
-
-    interface ArticleApi {
-
-    }
-
-    interface UserApi {
-
-    }
+    interface UserApi
 }

@@ -5,7 +5,9 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
+
 
 android {
     compileSdkVersion(Versions.compileSdkVersion)
@@ -89,6 +91,7 @@ dependencies {
     implementation(Libs.AndroidX.LifecycleLivedata)
     implementation(Libs.AndroidX.LifecycleViewModel)
     implementation(Libs.AndroidX.SwipeRefreshLayout)
+    implementation("androidx.fragment:fragment-ktx:1.2.5")
 
     implementation(Libs.RxJava)
     implementation(Libs.RxAndroid)
@@ -100,8 +103,21 @@ dependencies {
     implementation(Libs.UmCommon)
     implementation(Libs.UmAsms)
     implementation(Libs.UmCrash)
-    implementation(Libs.Dagger)
-    kapt(Libs.DaggerCompiler)
+//    implementation(Libs.Dagger)
+//    kapt(Libs.DaggerCompiler)
+
+    implementation(Libs.Hilt)
+    kapt(Libs.HiltCompiler)
+    implementation(Libs.AndroidX.HiltViewModel)
+    kapt(Libs.AndroidX.HiltViewModelCompiler)
+
+    // hilt
+//    implementation("com.google.dagger:hilt-android:2.28-alpha")
+//    kapt("com.google.dagger:hilt-android-compiler:2.28-alpha")
+//    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02")
+//    kapt("androidx.hilt:hilt-compiler:1.0.0-alpha02")
+
+
     implementation(Libs.Moshi)
     kapt(Libs.MoshiCodegen)
     implementation(Libs.Retrofit)

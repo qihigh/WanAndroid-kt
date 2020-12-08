@@ -1,11 +1,15 @@
 /* (C)2020 */
 package com.qihuan.wanandroid.app.modules
 
+import android.app.Application
 import com.qihuan.wanandroid.app.JsonUtil
 import com.qihuan.wanandroid.network.RetrofitApi
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -13,26 +17,31 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+/**
+ * 全局提供实例。
+ * @provide 是用来提供注入实例的
+ * @binds 是用来注入接口实例的。这里暂时未用到
+ */
+@InstallIn(ApplicationComponent::class)
 @Module
 class AppModule {
 
     /**
      * json相关
      */
-    @Singleton
     @Provides
     fun provideMoshi(): Moshi {
         return Moshi.Builder().build()
     }
 
-    @Singleton
     @Provides
+    @Singleton
     fun provideJsonUtil(moshi: Moshi): JsonUtil {
         return JsonUtil(moshi)
     }
 
-    @Singleton
     @Provides
+    @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient().newBuilder()
             .readTimeout(60, TimeUnit.SECONDS)
@@ -44,8 +53,8 @@ class AppModule {
             .build()
     }
 
-    @Singleton
     @Provides
+    @Singleton
     fun provideRetrofitAdapter(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
         val baseUrl = "https://www.wanandroid.com/"
         return Retrofit.Builder()
@@ -56,22 +65,9 @@ class AppModule {
             .build()
     }
 
-    @Singleton
-    @Provides
-    fun provideLoginService(retrofitAdapter: Retrofit): RetrofitApi.LoginApi {
-        return retrofitAdapter.create(RetrofitApi.LoginApi::class.java)
-    }
-
-    @Singleton
-    @Provides
-    fun provideUserService(retrofitAdapter: Retrofit): RetrofitApi.UserApi {
-        return retrofitAdapter.create(RetrofitApi.UserApi::class.java)
-    }
-
     /**
      * 账户相关
      */
-    @Singleton
     @Provides
     fun provideAccount(): String {
         throw Exception()

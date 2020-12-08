@@ -2,14 +2,12 @@
 package com.qihuan.wanandroid
 
 import android.app.Application
-import com.qihuan.wanandroid.app.AppComponent
-import com.qihuan.wanandroid.app.DaggerAppComponent
-import com.qihuan.wanandroid.app.modules.AndroidModule
 import com.umeng.analytics.MobclickAgent
 import com.umeng.commonsdk.UMConfigure
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class WApplication : Application() {
-    private var appComponent: AppComponent? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -24,19 +22,6 @@ class WApplication : Application() {
         )
         UMConfigure.setLogEnabled(BuildConfig.DEBUG)
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.MANUAL)
-    }
-
-    fun getAppComponent(): AppComponent {
-        if (null == appComponent) {
-            initAppComponent()
-        }
-        return appComponent!!
-    }
-
-    private fun initAppComponent() {
-        appComponent = DaggerAppComponent.builder()
-            .androidModule(AndroidModule(this))
-            .build()
     }
 
     companion object {
