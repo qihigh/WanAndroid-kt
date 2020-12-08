@@ -2,13 +2,9 @@
 package com.qihuan.wanandroid.ui.main
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
-import com.qihuan.wanandroid.MainActivity
 import com.qihuan.wanandroid.R
 import com.qihuan.wanandroid.app.BaseFragment
 import com.qihuan.wanandroid.app.JsonUtil
@@ -17,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainFragment : BaseFragment() {
+class MainFragment : BaseFragment(R.layout.main_fragment) {
 
     companion object {
         fun newInstance() = MainFragment()
@@ -31,24 +27,17 @@ class MainFragment : BaseFragment() {
     @Inject
     lateinit var loginService: RetrofitApi.LoginApi
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+    override fun initData(bundle: Bundle?) {
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-//
-        // TODO: Use the ViewModel
-
+    override fun initView() {
         view?.findViewById<View>(R.id.message)?.setOnClickListener {
-            Snackbar.make(view!!, "test", Snackbar.LENGTH_SHORT).show()
-
+            Snackbar.make(requireView(), "test", Snackbar.LENGTH_SHORT).show()
 //            val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
             viewModel.register()
         }
+    }
+
+    override fun doBusiness() {
     }
 }

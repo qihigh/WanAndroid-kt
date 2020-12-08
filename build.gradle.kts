@@ -37,6 +37,8 @@ subprojects {
         //对应google
         maven("https://maven.aliyun.com/repository/google")
         maven("https://dl.bintray.com/umsdk/release")
+
+//        maven("http://10.222.69.80:8081/repository/weibointl/")
     }
 
     /**

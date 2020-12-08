@@ -1,3 +1,4 @@
+/* (C)2020 */
 package com.qihuan.wanandroid.app
 
 import com.qihuan.wanandroid.model.ApiResponse
@@ -35,5 +36,4 @@ fun <Downstream> applyResponseTransform(): ObservableTransformer<ApiResponse<Dow
             }
         }
     }
-
 }

@@ -1,16 +1,15 @@
 /* (C)2020 */
 package com.qihuan.wanandroid.app.modules
 
-import android.app.Application
+import com.qihuan.wanandroid.BuildConfig
 import com.qihuan.wanandroid.app.JsonUtil
-import com.qihuan.wanandroid.network.RetrofitApi
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
-import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -43,14 +42,20 @@ class AppModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient().newBuilder()
+        val builder = OkHttpClient().newBuilder()
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS)
             // 失败重连
             .retryOnConnectionFailure(true)
-//            .addInterceptor(HttpLoggingInterceptor("httpLog")) //添加打印拦截器
-            .build()
+
+        if (BuildConfig.DEBUG) {
+            builder.addInterceptor(HttpLoggingInterceptor().apply {
+                setLevel(HttpLoggingInterceptor.Level.BODY)
+            })
+        }
+
+        return builder.build()
     }
 
     @Provides

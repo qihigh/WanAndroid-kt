@@ -1,5 +1,5 @@
-import com.qihuan.versionplugin.Ext.Versions
 import com.qihuan.versionplugin.Ext.Libs
+import com.qihuan.versionplugin.Ext.Versions
 
 plugins {
     id("com.android.application")
@@ -98,31 +98,22 @@ dependencies {
 //    implementation(Libs.RxPermissions)
     implementation(Libs.Glide)
     implementation(Libs.Mmkv)
-    implementation(Libs.ButterKnife)
-    kapt(Libs.ButterKnifeCompiler)
     implementation(Libs.UmCommon)
     implementation(Libs.UmAsms)
     implementation(Libs.UmCrash)
-//    implementation(Libs.Dagger)
-//    kapt(Libs.DaggerCompiler)
 
     implementation(Libs.Hilt)
     kapt(Libs.HiltCompiler)
     implementation(Libs.AndroidX.HiltViewModel)
     kapt(Libs.AndroidX.HiltViewModelCompiler)
 
-    // hilt
-//    implementation("com.google.dagger:hilt-android:2.28-alpha")
-//    kapt("com.google.dagger:hilt-android-compiler:2.28-alpha")
-//    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02")
-//    kapt("androidx.hilt:hilt-compiler:1.0.0-alpha02")
-
-
     implementation(Libs.Moshi)
     kapt(Libs.MoshiCodegen)
     implementation(Libs.Retrofit)
     implementation(Libs.MoshiConverter)
     implementation(Libs.RxJavaAdapter)
+    implementation(Libs.OkHttpLogging)
+    implementation(Libs.AndroidUtil)
 
 
     testImplementation("junit:junit:4.+")

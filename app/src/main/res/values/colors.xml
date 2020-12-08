@@ -1,10 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">@color/color_prompt</color>
+    <color name="colorPrimaryDark">@color/color_prompt_toast</color>
+    <color name="colorAccent">@color/color_focus</color>
+
+    <color name="color_focus">#DF2029</color>
+    <color name="color_prompt">#FFAA30</color>
+    <color name="color_prompt_toast">#E6FFAA30</color>
+    <color name="color_link">#507daf</color>
+
+    <!-- 卡片背景色 -->
+    <color name="w_card_bg">#FFFFFF</color>
+    <!-- 转发区背景色 -->
+    <color name="w_repost_bg">#F8F8F8</color>
+    <!-- 全局背景底色 -->
+    <color name="w_page_bg">#F4F4F4</color>
+    <!-- 内容分割线颜色 -->
+    <color name="w_separator">#0A000000</color>
+    <!-- 头像、图片占位色 -->
+    <color name="w_pic_default_bg">#EFEFEF</color>
+    <!-- 导航栏背景色 -->
+    <color name="w_navbar_bg">#FBFBFB</color>
+    <!-- 弹窗背景色 -->
+    <color name="w_popup_bg">#FFFFFF</color>
+    <!-- 顶导文字及图标色 -->
+    <color name="w_primary_nav_title">#1A1A1A</color>
+    <!-- 昵称、微博正文 -->
+    <color name="w_secondary_weibo_text">#252525</color>
+    <!-- 转发区正文、副标题 -->
+    <color name="w_tertiary_repost_text">#505050</color>
+    <!-- 时间来源 简介 -->
+    <color name="w_quarternary_time">#A4A4A5</color>
+    <!-- 失效描述文字色 -->
+    <color name="w_disable">#C8C8C9</color>
+    <!-- 导航栏阴影 -->
+    <color name="w_navbar_shadow">#14000000</color>
+    <!-- 按钮背景色 -->
+    <color name="w_btn_bg">#1C919192</color>
+    <!-- 白色2-->
+    <color name="white_two">#d8d8d8</color>
+    <!-- 卡片背景色 -->
+    <color name="d_card_bg">#1C1C1E</color>
+    <!-- 转发区背景色 -->
+    <color name="d_repost_bg">#18181A</color>
+    <!-- 全局背景底色 -->
+    <color name="d_page_bg">#141416</color>
+    <!-- 内容分割线颜色 -->
+    <color name="d_separator">#0AFFFFFF</color>
+    <!-- 头像、图片占位色 -->
+    <color name="d_pic_default_bg">#262628</color>
+    <!-- 导航栏背景色 -->
+    <color name="d_navbar_bg">#19191B</color>
+    <!-- 弹窗背景色 -->
+    <color name="d_popup_bg">#363637</color>
+    <!-- 顶导文字及图标色 -->
+    <color name="d_primary_nav_title">#CCFFFFFF</color>
+    <!-- 昵称、微博正文 -->
+    <color name="d_secondary_weibo_text">#B4B4B6</color>
+    <!-- 转发区正文、副标题 -->
+    <color name="d_tertiary_repost_text">#8F8F91</color>
+    <!-- 时间来源 简介 -->
+    <color name="d_quarternary_time">#78787A</color>
+    <!-- 失效描述文字色 -->
+    <color name="d_disable">#575759</color>
+    <!-- 导航栏阴影 -->
+    <color name="d_navbar_shadow">#0FFFFFFF</color>
+    <!-- 按钮背景色 -->
+    <color name="d_btn_bg">#2678787A</color>
+
+
+    <color name="pers10_black">#1A000000</color>
+    <color name="pers10_white">#1AFFFFFF</color>
+
 </resources>

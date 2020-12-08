@@ -24,8 +24,10 @@ object Ext {
             const val LifecycleLivedata = "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
             const val LifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
             const val SwipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-            const val HiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltViewModel}"
-            const val HiltViewModelCompiler = "androidx.hilt:hilt-compiler:${Versions.hiltViewModel}"
+            const val HiltViewModel =
+                "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltViewModel}"
+            const val HiltViewModelCompiler =
+                "androidx.hilt:hilt-compiler:${Versions.hiltViewModel}"
         }
 
 
@@ -52,5 +54,7 @@ object Ext {
         const val Retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
         const val MoshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
         const val RxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
+        const val OkHttpLogging = "com.squareup.okhttp3:logging-interceptor:4.9.0"
+        const val AndroidUtil = "com.blankj:utilcodex:1.30.5"
     }
 }

@@ -4,7 +4,6 @@ package com.qihuan.wanandroid.app.modules
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.components.ApplicationComponent
 
 /**
  * activity级别的module，
@@ -16,5 +15,4 @@ import dagger.hilt.android.components.ApplicationComponent
  */
 @InstallIn(ActivityComponent::class)
 @Module
-class ActivityModule() {
-}
+class ActivityModule()
