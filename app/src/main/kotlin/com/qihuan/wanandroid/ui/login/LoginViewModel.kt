@@ -1,3 +1,4 @@
+/* (C)2020 */
 package com.qihuan.wanandroid.ui.login
 
 import androidx.hilt.lifecycle.ViewModelInject
@@ -39,12 +40,15 @@ class LoginViewModel @ViewModelInject constructor(
         loginService.login(userName!!, userPsd!!)
             .compose(applyResponseTransform())
             .compose(applyUIAsync())
-            .subscribe({
-                userInfo.postValue(it.data)
-            }, {
-                _snackMsg.postValue("登录失败 $it")
-                LogUtil.e { it }
-            }).let {
+            .subscribe(
+                {
+                    userInfo.postValue(it.data)
+                },
+                {
+                    _snackMsg.postValue("登录失败 $it")
+                    LogUtil.e { it }
+                }
+            ).let {
                 accept(it)
             }
     }
@@ -61,7 +65,6 @@ class LoginViewModel @ViewModelInject constructor(
         updateLoginBtn()
     }
 
-
     override fun setPsdTwice(psdTwice: String) {
         this.userPsdTwice = psdTwice
     }
@@ -74,12 +77,15 @@ class LoginViewModel @ViewModelInject constructor(
         loginService.register(userName!!, userPsd!!, userPsd!!)
             .compose(applyResponseTransform())
             .compose(applyUIAsync())
-            .subscribe({
-                userInfo.postValue(it.data)
-            }, {
-                _snackMsg.postValue("注册失败 $it")
-                LogUtil.e { it }
-            }).let {
+            .subscribe(
+                {
+                    userInfo.postValue(it.data)
+                },
+                {
+                    _snackMsg.postValue("注册失败 $it")
+                    LogUtil.e { it }
+                }
+            ).let {
                 accept(it)
             }
     }
@@ -92,7 +98,6 @@ class LoginViewModel @ViewModelInject constructor(
     }
 
     override fun getRegisterMode(): LiveData<Boolean> = registerEnable
-
 
     private fun updateLoginBtn() {
         if (!this.userName.isNullOrBlank() && !this.userPsd.isNullOrBlank()) {

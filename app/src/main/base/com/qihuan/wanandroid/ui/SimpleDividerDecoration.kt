@@ -1,3 +1,4 @@
+/* (C)2020 */
 package com.qihuan.wanandroid.ui
 
 import android.content.Context
@@ -8,8 +9,6 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.AdaptScreenUtils
-import com.blankj.utilcode.util.Utils
-import com.blankj.utilcode.util.ViewUtils
 import com.qihuan.wanandroid.R
 
 /**

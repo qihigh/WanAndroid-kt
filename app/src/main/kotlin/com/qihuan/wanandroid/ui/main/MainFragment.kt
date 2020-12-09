@@ -15,6 +15,7 @@ import com.qihuan.wanandroid.app.BaseFragment
 import com.qihuan.wanandroid.app.JsonUtil
 import com.qihuan.wanandroid.network.RetrofitApi
 import com.qihuan.wanandroid.ui.home.HomeFragment
+import com.qihuan.wanandroid.ui.login.LoginFragment
 import com.qihuan.wanandroid.ui.profile.ProfileFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -41,7 +42,7 @@ class MainFragment : BaseFragment(R.layout.main_fragment) {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.main_bottom)
         val viewPager = findViewById<ViewPager2>(R.id.main_viewpager)
-        //选中
+        // 选中
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.tab_home -> {
@@ -66,40 +67,35 @@ class MainFragment : BaseFragment(R.layout.main_fragment) {
         bottomNavigationView.setOnNavigationItemReselectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.tab_home -> {
-
                 }
                 R.id.tab_question -> {
-
                 }
                 R.id.tab_me -> {
-
                 }
                 R.id.tab_tree -> {
-
                 }
             }
         }
 
-        //默认选中第一个 不做处理。
+        // 默认选中第一个 不做处理。
 
-        //处理viewPager
-        viewPager.offscreenPageLimit = 3
-        viewPager.isUserInputEnabled = false//禁止滑动
+        // 处理viewPager
+//        viewPager.offscreenPageLimit = 3
+        viewPager.isUserInputEnabled = false // 禁止滑动
         viewPager.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount(): Int = 4
 
             override fun createFragment(position: Int): Fragment {
                 return when (position) {
                     0 -> HomeFragment.newInstance()
+                    3 -> LoginFragment.newInstance()
                     else -> {
                         ProfileFragment.newInstance()
                     }
                 }
             }
         }
-
     }
-
 
     override fun doBusiness() {
     }

@@ -7,16 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainFragment">
 
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/message"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="MainFragment"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/main_viewpager"
         android:layout_width="0dp"

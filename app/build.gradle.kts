@@ -116,6 +116,7 @@ dependencies {
     implementation(Libs.RxJavaAdapter)
     implementation(Libs.OkHttpLogging)
     implementation(Libs.AndroidUtil)
+    implementation("com.gyf.immersionbar:immersionbar:3.0.0")
 
 
     testImplementation("junit:junit:4.+")

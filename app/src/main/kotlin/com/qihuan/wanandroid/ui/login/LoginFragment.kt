@@ -1,3 +1,4 @@
+/* (C)2020 */
 package com.qihuan.wanandroid.ui.login
 
 import android.os.Bundle
@@ -54,25 +55,37 @@ class LoginFragment : BaseFragment(R.layout.login_fragment) {
             viewModel.toggleRegister(true)
         }
 
-        viewModel.getLoginBtnEnable().observe(viewLifecycleOwner, Observer { enable ->
-            loginBtn.isEnabled = enable
-        })
+        viewModel.getLoginBtnEnable().observe(
+            viewLifecycleOwner,
+            Observer { enable ->
+                loginBtn.isEnabled = enable
+            }
+        )
 
-        viewModel.getRegisterMode().observe(viewLifecycleOwner, Observer { isRegister ->
-            loginPsdLayoutTwice.visibility = if (isRegister) View.VISIBLE else View.GONE
-            loginBtn.text = if (isRegister) "注册" else "登录"
-        })
+        viewModel.getRegisterMode().observe(
+            viewLifecycleOwner,
+            Observer { isRegister ->
+                loginPsdLayoutTwice.visibility = if (isRegister) View.VISIBLE else View.GONE
+                loginBtn.text = if (isRegister) "注册" else "登录"
+            }
+        )
     }
 
     override fun doBusiness() {
-        viewModel.getUserInfo().observe(viewLifecycleOwner, Observer { userInfo ->
-            //登录成功
-            viewModel._snackMsg.postValue("登录成功")
-        })
+        viewModel.getUserInfo().observe(
+            viewLifecycleOwner,
+            Observer { userInfo ->
+                // 登录成功
+                viewModel._snackMsg.postValue("登录成功")
+            }
+        )
 
-        viewModel.snackMsg.observe(viewLifecycleOwner, Observer {
-            if (it.isNotEmpty())
-                Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT).show()
-        })
+        viewModel.snackMsg.observe(
+            viewLifecycleOwner,
+            Observer {
+                if (it.isNotEmpty())
+                    Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT).show()
+            }
+        )
     }
 }

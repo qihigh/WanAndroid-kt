@@ -1,3 +1,4 @@
+/* (C)2020 */
 package com.qihuan.wanandroid.ui.home
 
 import android.content.Context
@@ -19,12 +20,11 @@ class HomeAdapter(
         return ArticleVH(parent, homeVM)
     }
 
-
     class ArticleVH(parent: ViewGroup, vm: IHomeViewModel) :
         EViewHolder<Article>(parent, R.layout.item_article) {
         override fun setData(data: Article) {
             getTextView(R.id.item_article_author)?.text = data.author
-            getTextView(R.id.item_article_content)?.text = data.title// ?: data.desc
+            getTextView(R.id.item_article_content)?.text = data.title // ?: data.desc
             getTextView(R.id.item_article_chapter)?.text = data.superChapterName
             getTextView(R.id.item_article_time)?.text =
                 if (data.niceDate.isNotBlank()) data.niceDate else data.publishTime.toString()
@@ -36,6 +36,5 @@ class HomeAdapter(
                 LogUtil.d { data.toString() }
             }
         }
-
     }
 }

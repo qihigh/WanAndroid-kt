@@ -1,3 +1,4 @@
+/* (C)2020 */
 package com.qihuan.wanandroid.app.viewmodel
 
 import androidx.lifecycle.LiveData
@@ -25,4 +26,3 @@ interface ISnackViewModel {
 
     val _snackMsg: MutableLiveData<String>
 }
-

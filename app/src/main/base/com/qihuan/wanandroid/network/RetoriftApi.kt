@@ -1,12 +1,15 @@
 /* (C)2020 */
 package com.qihuan.wanandroid.network
 
-import androidx.lifecycle.LiveData
 import com.qihuan.wanandroid.model.ApiResponse
 import com.qihuan.wanandroid.model.ArticleList
 import com.qihuan.wanandroid.model.UserInfo
 import io.reactivex.Observable
-import retrofit2.http.*
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
 
 sealed class RetrofitApi {
     interface LoginApi {

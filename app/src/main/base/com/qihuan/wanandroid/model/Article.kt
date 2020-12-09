@@ -1,5 +1,5 @@
+/* (C)2020 */
 package com.qihuan.wanandroid.model
-
 
 import androidx.annotation.Keep
 import com.squareup.moshi.Json

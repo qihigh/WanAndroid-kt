@@ -1,3 +1,4 @@
+/* (C)2020 */
 package com.qihuan.wanandroid.ui.profile
 
 import androidx.hilt.lifecycle.ViewModelInject

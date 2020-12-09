@@ -52,7 +52,6 @@ abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId), IBas
         initData(bundle)
     }
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initView()

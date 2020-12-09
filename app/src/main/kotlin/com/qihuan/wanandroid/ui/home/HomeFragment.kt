@@ -1,12 +1,10 @@
+/* (C)2020 */
 package com.qihuan.wanandroid.ui.home
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.appbar.MaterialToolbar
 import com.qihuan.wanandroid.R
 import com.qihuan.wanandroid.app.BaseFragment
 import com.qihuan.wanandroid.eRecycle.ERecyclerView
@@ -28,12 +26,8 @@ class HomeFragment : BaseFragment(R.layout.home_fragment), ICommonAdapter {
     }
 
     override fun initView() {
-        val homeList = findViewById<ERecyclerView>(R.id.home_list)
-        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
 
-        toolbar.title = "WanAndroid"
-//        toolbar.setCollapseIcon(R.drawable.ic_home)
-        (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
+        val homeList = findViewById<ERecyclerView>(R.id.home_list)
 
         val homeAdapter = HomeAdapter(requireContext(), emptyList(), viewModel)
         wrapperAdapter(homeAdapter)
@@ -43,15 +37,18 @@ class HomeFragment : BaseFragment(R.layout.home_fragment), ICommonAdapter {
         homeList.setRefreshListener(this)
         homeList.setRefreshing(isRefreshing = true, isCallbackListener = true)
 
-        //监听数据变化
-        viewModel.getArticleListLv().observe(viewLifecycleOwner, Observer { loadEvent ->
-            commonLoad(
-                homeAdapter,
-                homeList,
-                loadEvent,
-                itemCallback = DIFF_ARTICLE
-            )
-        })
+        // 监听数据变化
+        viewModel.getArticleListLv().observe(
+            viewLifecycleOwner,
+            Observer { loadEvent ->
+                commonLoad(
+                    homeAdapter,
+                    homeList,
+                    loadEvent,
+                    itemCallback = DIFF_ARTICLE
+                )
+            }
+        )
     }
 
     override fun doBusiness() {
@@ -64,6 +61,4 @@ class HomeFragment : BaseFragment(R.layout.home_fragment), ICommonAdapter {
     override fun onRefresh() {
         viewModel.load(true)
     }
-
-
 }
