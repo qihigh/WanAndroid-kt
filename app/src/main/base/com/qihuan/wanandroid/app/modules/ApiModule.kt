@@ -23,6 +23,12 @@ class ApiModule {
 
     @Provides
     @Singleton
+    fun provideArticleService(retrofitAdapter: Retrofit): RetrofitApi.ArticleApi {
+        return retrofitAdapter.create(RetrofitApi.ArticleApi::class.java)
+    }
+
+    @Provides
+    @Singleton
     fun provideUserService(retrofitAdapter: Retrofit): RetrofitApi.UserApi {
         return retrofitAdapter.create(RetrofitApi.UserApi::class.java)
     }

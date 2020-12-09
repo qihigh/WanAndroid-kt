@@ -24,6 +24,8 @@ object Ext {
             const val LifecycleLivedata = "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
             const val LifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
             const val SwipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+            const val NavigationFragment = "androidx.navigation:navigation-fragment-ktx:2.0.0"
+            const val NavigationUI = "androidx.navigation:navigation-ui-ktx:2.0.0"
             const val HiltViewModel =
                 "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltViewModel}"
             const val HiltViewModelCompiler =

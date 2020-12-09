@@ -74,5 +74,6 @@
 
     <color name="pers10_black">#1A000000</color>
     <color name="pers10_white">#1AFFFFFF</color>
+    <color name="gray">#9297A2</color>
 
 </resources>

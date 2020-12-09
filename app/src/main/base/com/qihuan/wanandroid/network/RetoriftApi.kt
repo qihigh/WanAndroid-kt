@@ -1,13 +1,12 @@
 /* (C)2020 */
 package com.qihuan.wanandroid.network
 
+import androidx.lifecycle.LiveData
 import com.qihuan.wanandroid.model.ApiResponse
+import com.qihuan.wanandroid.model.ArticleList
 import com.qihuan.wanandroid.model.UserInfo
 import io.reactivex.Observable
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 sealed class RetrofitApi {
     interface LoginApi {
@@ -22,7 +21,7 @@ sealed class RetrofitApi {
         @POST("user/login")
         fun login(
             @Field("username") username: String,
-            @Field("password") password: String
+            @Field("password") password: String,
         ): Observable<ApiResponse<UserInfo>>
 
         @FormUrlEncoded
@@ -30,7 +29,7 @@ sealed class RetrofitApi {
         fun register(
             @Field("username") username: String,
             @Field("password") password: String,
-            @Field("repassword") rePassword: String
+            @Field("repassword") rePassword: String,
         ): Observable<ApiResponse<UserInfo>>
 
         @GET("user/logout/json")
@@ -41,7 +40,16 @@ sealed class RetrofitApi {
 
     interface TreeApi
 
-    interface ArticleApi
+    interface ArticleApi {
+        /**
+         * 获取文章列表
+         *
+         * @param page 页码，拼接在连接中，从0开始。
+         * @return
+         */
+        @GET("article/list/{page}/json")
+        fun listArticle(@Path("page") page: Int): Observable<ApiResponse<ArticleList>>
+    }
 
     interface UserApi
 }

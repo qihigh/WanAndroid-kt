@@ -18,6 +18,4 @@ open class BaseViewModel : ViewModel(), Consumer<Disposable> {
     override fun accept(disposable: Disposable) {
         mCompositeDisposable.add(disposable)
     }
-
-    open fun toggleRegister(register: Boolean) {}
 }
