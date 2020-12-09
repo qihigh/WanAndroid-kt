@@ -2,6 +2,7 @@
 package com.qihuan.wanandroid.network
 
 import com.qihuan.wanandroid.model.ApiResponse
+import com.qihuan.wanandroid.model.Article
 import com.qihuan.wanandroid.model.ArticleList
 import com.qihuan.wanandroid.model.UserInfo
 import io.reactivex.Observable
@@ -52,6 +53,9 @@ sealed class RetrofitApi {
          */
         @GET("article/list/{page}/json")
         fun listArticle(@Path("page") page: Int): Observable<ApiResponse<ArticleList>>
+
+        @GET("article/top/json")
+        fun listTopArticle(): Observable<ApiResponse<List<Article>>>
     }
 
     interface UserApi

@@ -34,6 +34,17 @@ class HomeViewModel @ViewModelInject constructor(
     }
 
     override fun doLoadData(loadNew: Boolean, skipCache: Boolean): Observable<List<Article>> {
+        if (loadNew) {
+            // 合并请求置顶文章和第一页文章
+            return Observable.zip(
+                articleApi.listTopArticle().compose(applyResponseTransform()),
+                articleApi.listArticle(0).compose(applyResponseTransform()),
+                { topArticle, article ->
+                    (topArticle.data ?: emptyList()) + (article.data?.articles ?: emptyList())
+                }
+            ).compose(applyUIAsync())
+        }
+
         return articleApi.listArticle(page)
             .compose(applyResponseTransform())
             .compose(applyUIAsync())

@@ -80,7 +80,7 @@ class MainFragment : BaseFragment(R.layout.main_fragment) {
         // 默认选中第一个 不做处理。
 
         // 处理viewPager
-//        viewPager.offscreenPageLimit = 3
+        viewPager.offscreenPageLimit = 3
         viewPager.isUserInputEnabled = false // 禁止滑动
         viewPager.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount(): Int = 4
