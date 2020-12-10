@@ -32,4 +32,10 @@ class ApiModule {
     fun provideUserService(retrofitAdapter: Retrofit): RetrofitApi.UserApi {
         return retrofitAdapter.create(RetrofitApi.UserApi::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideProjectService(retrofitAdapter: Retrofit): RetrofitApi.ProjectApi {
+        return retrofitAdapter.create(RetrofitApi.ProjectApi::class.java)
+    }
 }

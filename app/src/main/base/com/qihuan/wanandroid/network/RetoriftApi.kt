@@ -3,7 +3,8 @@ package com.qihuan.wanandroid.network
 
 import com.qihuan.wanandroid.model.ApiResponse
 import com.qihuan.wanandroid.model.Article
-import com.qihuan.wanandroid.model.ArticleList
+import com.qihuan.wanandroid.model.PageData
+import com.qihuan.wanandroid.model.Project
 import com.qihuan.wanandroid.model.UserInfo
 import io.reactivex.Observable
 import retrofit2.http.Field
@@ -40,7 +41,13 @@ sealed class RetrofitApi {
         fun logout(): Observable<ApiResponse<String>>
     }
 
-    interface ProjectApi
+    interface ProjectApi {
+        /**
+         * 获取项目列表
+         */
+        @GET("article/listproject/{page}/json")
+        fun listProject(@Path("page") page: Int): Observable<ApiResponse<PageData<Project>>>
+    }
 
     interface TreeApi
 
@@ -52,7 +59,7 @@ sealed class RetrofitApi {
          * @return
          */
         @GET("article/list/{page}/json")
-        fun listArticle(@Path("page") page: Int): Observable<ApiResponse<ArticleList>>
+        fun listArticle(@Path("page") page: Int): Observable<ApiResponse<PageData<Article>>>
 
         @GET("article/top/json")
         fun listTopArticle(): Observable<ApiResponse<List<Article>>>

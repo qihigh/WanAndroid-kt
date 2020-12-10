@@ -40,7 +40,7 @@ class HomeViewModel @ViewModelInject constructor(
                 articleApi.listTopArticle().compose(applyResponseTransform()),
                 articleApi.listArticle(0).compose(applyResponseTransform()),
                 { topArticle, article ->
-                    (topArticle.data ?: emptyList()) + (article.data?.articles ?: emptyList())
+                    (topArticle.data ?: emptyList()) + (article.data?.dataList ?: emptyList())
                 }
             ).compose(applyUIAsync())
         }
@@ -48,7 +48,7 @@ class HomeViewModel @ViewModelInject constructor(
         return articleApi.listArticle(page)
             .compose(applyResponseTransform())
             .compose(applyUIAsync())
-            .map { it.data?.articles ?: emptyList() }
+            .map { it.data?.dataList ?: emptyList() }
     }
 
     companion object {

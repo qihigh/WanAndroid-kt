@@ -17,6 +17,7 @@ import com.qihuan.wanandroid.network.RetrofitApi
 import com.qihuan.wanandroid.ui.home.HomeFragment
 import com.qihuan.wanandroid.ui.login.LoginFragment
 import com.qihuan.wanandroid.ui.profile.ProfileFragment
+import com.qihuan.wanandroid.ui.project.ProjectFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -88,6 +89,7 @@ class MainFragment : BaseFragment(R.layout.main_fragment) {
             override fun createFragment(position: Int): Fragment {
                 return when (position) {
                     0 -> HomeFragment.newInstance()
+                    1 -> ProjectFragment.newInstance()
                     3 -> LoginFragment.newInstance()
                     else -> {
                         ProfileFragment.newInstance()

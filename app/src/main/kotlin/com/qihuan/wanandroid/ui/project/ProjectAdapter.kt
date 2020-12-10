@@ -1,5 +1,5 @@
 /* (C)2020 */
-package com.qihuan.wanandroid.ui.home
+package com.qihuan.wanandroid.ui.project
 
 import android.content.Context
 import android.content.Intent
@@ -10,21 +10,22 @@ import com.blankj.utilcode.util.ActivityUtils
 import com.qihuan.wanandroid.R
 import com.qihuan.wanandroid.eRecycle.EAdapter
 import com.qihuan.wanandroid.eRecycle.EViewHolder
-import com.qihuan.wanandroid.model.Article
+import com.qihuan.wanandroid.model.Project
 
-class HomeAdapter(
+class ProjectAdapter(
     context: Context,
-    data: List<Article>,
-    private val homeVM: IHomeViewModel,
-) : EAdapter<Article>(context, data) {
+    data: List<Project>,
+    private val projectVM: IProjectViewModel,
+) : EAdapter<Project>(context, data) {
 
-    override fun eCreateViewHolder(parent: ViewGroup, viewType: Int): EViewHolder<Article> {
-        return ArticleVH(parent, homeVM)
+    override fun eCreateViewHolder(parent: ViewGroup, viewType: Int): EViewHolder<Project> {
+        return ProjectVH(parent, projectVM)
     }
 
-    class ArticleVH(parent: ViewGroup, vm: IHomeViewModel) :
-        EViewHolder<Article>(parent, R.layout.item_article) {
-        override fun setData(data: Article) {
+    class ProjectVH(parent: ViewGroup, homeVM: IProjectViewModel) :
+        EViewHolder<Project>(parent, R.layout.item_article) {
+        override fun setData(data: Project) {
+            // TODO 当前和articleVH相同
             var displayTag: String? = when {
                 data.type == 1 -> "置顶"
                 data.fresh -> "新"

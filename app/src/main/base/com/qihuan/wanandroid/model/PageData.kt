@@ -7,11 +7,11 @@ import com.squareup.moshi.JsonClass
 
 @Keep
 @JsonClass(generateAdapter = true)
-data class ArticleList(
+data class PageData<T>(
     @Json(name = "curPage")
     val curPage: Int, // 1
     @Json(name = "datas")
-    val articles: List<Article>,
+    val dataList: List<T>,
     @Json(name = "offset")
     val offset: Int, // 0
     @Json(name = "over")
@@ -21,5 +21,5 @@ data class ArticleList(
     @Json(name = "size")
     val size: Int, // 20
     @Json(name = "total")
-    val total: Int // 9654
+    val total: Int, // 9654
 )
