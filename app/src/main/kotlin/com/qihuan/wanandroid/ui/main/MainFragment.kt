@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -81,8 +82,11 @@ class MainFragment : BaseFragment(R.layout.main_fragment) {
         // 默认选中第一个 不做处理。
 
         // 处理viewPager
-        viewPager.offscreenPageLimit = 3
         viewPager.isUserInputEnabled = false // 禁止滑动
+        // 这里调整缓存大小，不让fragment被回收。
+//        viewPager.offscreenPageLimit = 3
+        viewPager.offscreenPageLimit = 1
+        (viewPager.getChildAt(0) as RecyclerView).setItemViewCacheSize(3)
         viewPager.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount(): Int = 4
 

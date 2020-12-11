@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qihuan.wanandroid.R
 import com.qihuan.wanandroid.app.BaseFragment
+import com.qihuan.wanandroid.app.LogUtil
 import com.qihuan.wanandroid.eRecycle.ERecyclerView
 import com.qihuan.wanandroid.eRecycle.ICommonAdapter
 import com.qihuan.wanandroid.ui.SimpleDividerDecoration
@@ -25,9 +26,11 @@ class HomeFragment : BaseFragment(R.layout.home_fragment), ICommonAdapter {
     override fun initData(bundle: Bundle?) {
     }
 
-    override fun initView() {
+    private lateinit var homeList: ERecyclerView
 
-        val homeList = findViewById<ERecyclerView>(R.id.home_list)
+    override fun initView() {
+        LogUtil.d { viewModel.toString() }
+        homeList = findViewById<ERecyclerView>(R.id.home_list)
 
         val homeAdapter = HomeAdapter(requireContext(), emptyList(), viewModel)
         wrapperAdapter(homeAdapter)
@@ -35,7 +38,6 @@ class HomeFragment : BaseFragment(R.layout.home_fragment), ICommonAdapter {
         homeList.addItemDecoration(SimpleDividerDecoration(requireContext()))
         homeList.setAdapter(homeAdapter)
         homeList.setRefreshListener(this)
-        homeList.setRefreshing(isRefreshing = true, isCallbackListener = true)
 
         // 监听数据变化
         viewModel.getArticleListLv().observe(
@@ -52,6 +54,8 @@ class HomeFragment : BaseFragment(R.layout.home_fragment), ICommonAdapter {
     }
 
     override fun doBusiness() {
+        LogUtil.d { viewModel.toString() }
+        homeList.setRefreshing(isRefreshing = true, isCallbackListener = true)
     }
 
     override fun onLoadMore() {

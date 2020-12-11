@@ -8,30 +8,25 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 
+/**
+ * 基础baseFragment
+ *
+ * 懒加载模式基于 viewPager的setMaxLifecycle模式，或者viewpager2+offscreenPageLimit
+ */
 abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId), IBaseView {
 
     private val STATE_SAVE_IS_HIDDEN: String = "STATE_SAVE_IS_HIDDEN"
 
-    protected var mIsVisibleToUser = false
-    protected var mIsBusinessDone = false
-    protected var mIsInPager = false
+    //是否是第一次加载
+    private var isFirstLoad = true;
 
-    /**
-     * @return true true [.doBusiness] will lazy in view pager, false otherwise
-     */
-    open fun isLazy(): Boolean {
-        return false
-    }
-
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        super.setUserVisibleHint(isVisibleToUser)
-        mIsInPager = true
-        if (isVisibleToUser) mIsVisibleToUser = true
-        if (isLazy()) {
-            if (!mIsBusinessDone && isVisibleToUser && view != null) {
-                mIsBusinessDone = true
-                doBusiness()
-            }
+    override fun onResume() {
+        super.onResume()
+        //懒加载模式
+        if (isFirstLoad) {
+            isFirstLoad = false;
+            //仅加载一次business
+            doBusiness()
         }
     }
 
@@ -55,16 +50,13 @@ abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId), IBas
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initView()
-        if (!mIsInPager || !isLazy() || mIsVisibleToUser) {
-            mIsBusinessDone = true
-            doBusiness()
-        }
+
     }
 
     override fun onDestroyView() {
+        LogUtil.d { "触发回收" }
         super.onDestroyView()
-        mIsVisibleToUser = false
-        mIsBusinessDone = false
+        isFirstLoad = false
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

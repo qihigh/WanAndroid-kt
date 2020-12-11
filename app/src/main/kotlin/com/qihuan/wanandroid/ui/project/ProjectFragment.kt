@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qihuan.wanandroid.R
 import com.qihuan.wanandroid.app.BaseFragment
+import com.qihuan.wanandroid.app.LogUtil
 import com.qihuan.wanandroid.eRecycle.ERecyclerView
 import com.qihuan.wanandroid.eRecycle.ICommonAdapter
 import com.qihuan.wanandroid.ui.SimpleDividerDecoration
@@ -25,9 +26,11 @@ class ProjectFragment : BaseFragment(R.layout.project_fragment), ICommonAdapter 
 
     override fun initData(bundle: Bundle?) {
     }
+    private lateinit var projectList:ERecyclerView
 
     override fun initView() {
-        val projectList = findViewById<ERecyclerView>(R.id.project_list)
+        LogUtil.d { viewModel.toString() }
+        projectList = findViewById<ERecyclerView>(R.id.project_list)
 
         val projectAdapter = ProjectAdapter(requireContext(), emptyList(), viewModel)
         wrapperAdapter(projectAdapter)
@@ -35,7 +38,6 @@ class ProjectFragment : BaseFragment(R.layout.project_fragment), ICommonAdapter 
         projectList.addItemDecoration(SimpleDividerDecoration(requireContext()))
         projectList.setAdapter(projectAdapter)
         projectList.setRefreshListener(this)
-        projectList.setRefreshing(isRefreshing = true, isCallbackListener = true)
 
         // 监听数据变化
         viewModel.getProjectListLv().observe(
@@ -52,6 +54,8 @@ class ProjectFragment : BaseFragment(R.layout.project_fragment), ICommonAdapter 
     }
 
     override fun doBusiness() {
+        LogUtil.d { viewModel.toString() }
+        projectList.setRefreshing(isRefreshing = true, isCallbackListener = true)
     }
 
     override fun onLoadMore() {
