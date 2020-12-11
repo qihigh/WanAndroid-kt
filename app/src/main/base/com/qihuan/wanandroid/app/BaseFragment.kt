@@ -17,15 +17,15 @@ abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId), IBas
 
     private val STATE_SAVE_IS_HIDDEN: String = "STATE_SAVE_IS_HIDDEN"
 
-    //是否是第一次加载
-    private var isFirstLoad = true;
+    // 是否是第一次加载
+    private var isFirstLoad = true
 
     override fun onResume() {
         super.onResume()
-        //懒加载模式
+        // 懒加载模式
         if (isFirstLoad) {
-            isFirstLoad = false;
-            //仅加载一次business
+            isFirstLoad = false
+            // 仅加载一次business
             doBusiness()
         }
     }
@@ -50,7 +50,6 @@ abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId), IBas
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initView()
-
     }
 
     override fun onDestroyView() {

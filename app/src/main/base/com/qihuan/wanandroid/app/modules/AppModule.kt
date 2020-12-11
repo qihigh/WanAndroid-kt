@@ -4,6 +4,7 @@ package com.qihuan.wanandroid.app.modules
 import com.qihuan.wanandroid.BuildConfig
 import com.qihuan.wanandroid.app.JsonUtil
 import com.squareup.moshi.Moshi
+import com.tencent.mmkv.MMKV
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,6 +38,12 @@ class AppModule {
     @Singleton
     fun provideJsonUtil(moshi: Moshi): JsonUtil {
         return JsonUtil(moshi)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCache(): MMKV {
+        return MMKV.defaultMMKV()
     }
 
     @Provides

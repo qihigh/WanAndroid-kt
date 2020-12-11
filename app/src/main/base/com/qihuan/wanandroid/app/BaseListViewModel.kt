@@ -13,6 +13,11 @@ abstract class BaseListViewModel<T> : BaseViewModel(), IListViewModel<T> {
     protected var lastLoading = 0L
 
     /**
+     * page起始页，默认是0
+     */
+    protected open var pageStart = 0
+
+    /**
      * 缓存当前数据
      */
     var data: List<T> = emptyList()
@@ -32,7 +37,7 @@ abstract class BaseListViewModel<T> : BaseViewModel(), IListViewModel<T> {
         }
 
         lastLoading = System.currentTimeMillis()
-        page = if (isLoadNew) 0 else page
+        page = if (isLoadNew) pageStart else page
 
         doLoadData(isLoadNew, skipCache)
             .subscribe(

@@ -53,7 +53,7 @@ data class Article(
     @Json(name = "selfVisible")
     val selfVisible: Int, // 0
     @Json(name = "shareDate")
-    val shareDate: Long, // 1607496167000
+    val shareDate: Long?, // 1607496167000
     @Json(name = "shareUser")
     val shareUser: String, // qwerhuan
     @Json(name = "superChapterId")

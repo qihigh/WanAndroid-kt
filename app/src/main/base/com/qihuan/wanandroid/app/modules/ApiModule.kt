@@ -38,4 +38,10 @@ class ApiModule {
     fun provideProjectService(retrofitAdapter: Retrofit): RetrofitApi.ProjectApi {
         return retrofitAdapter.create(RetrofitApi.ProjectApi::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideWxService(retrofitAdapter: Retrofit): RetrofitApi.WxApi {
+        return retrofitAdapter.create(RetrofitApi.WxApi::class.java)
+    }
 }

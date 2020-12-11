@@ -6,6 +6,7 @@ import com.qihuan.wanandroid.model.Article
 import com.qihuan.wanandroid.model.PageData
 import com.qihuan.wanandroid.model.Project
 import com.qihuan.wanandroid.model.UserInfo
+import com.qihuan.wanandroid.model.WxChannel
 import io.reactivex.Observable
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -49,7 +50,16 @@ sealed class RetrofitApi {
         fun listProject(@Path("page") page: Int): Observable<ApiResponse<PageData<Project>>>
     }
 
-    interface TreeApi
+    interface WxApi {
+        @GET("wxarticle/chapters/json")
+        fun listWxChannel(): Observable<ApiResponse<List<WxChannel>>>
+
+        @GET("wxarticle/list/{id}/{page}/json")
+        fun loadWxArticle(
+            @Path("id") id: Int,
+            @Path("page") page: Int,
+        ): Observable<ApiResponse<PageData<Article>>>
+    }
 
     interface ArticleApi {
         /**

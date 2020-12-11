@@ -11,9 +11,9 @@
         android:icon="@drawable/ic_tab_question"
         android:title="@string/tab_question" />
     <item
-        android:id="@+id/tab_tree"
+        android:id="@+id/tab_wx"
         android:icon="@drawable/ic_tab_tree"
-        android:title="@string/tab_tree" />
+        android:title="@string/tab_wx" />
     <item
         android:id="@+id/tab_me"
         android:icon="@drawable/ic_tab_me"

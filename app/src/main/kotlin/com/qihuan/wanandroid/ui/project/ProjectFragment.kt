@@ -26,7 +26,7 @@ class ProjectFragment : BaseFragment(R.layout.project_fragment), ICommonAdapter 
 
     override fun initData(bundle: Bundle?) {
     }
-    private lateinit var projectList:ERecyclerView
+    private lateinit var projectList: ERecyclerView
 
     override fun initView() {
         LogUtil.d { viewModel.toString() }
