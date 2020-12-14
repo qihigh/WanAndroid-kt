@@ -18,7 +18,7 @@ const val KEY_WX_CHANNEL = "KEY_WX_CHANNEL"
 class WxViewModel @ViewModelInject constructor(
     private val wxService: RetrofitApi.WxApi,
     private val cache: MMKV,
-    private val jsonUtil: JsonUtil,
+    private val jsonUtil: JsonUtil
 ) : BaseViewModel(), IWxViewModel {
 
     private var wxChannelLV = MutableLiveData<List<WxChannel>>().apply {
@@ -31,10 +31,9 @@ class WxViewModel @ViewModelInject constructor(
         // 优先从缓存中获取
         val cacheJson = cache.decodeString(KEY_WX_CHANNEL)
         cacheJson?.let { theCacheJson ->
-            //TODO fix json cache
+            //json cache
             jsonUtil.fromJson<List<WxChannel>>(
                 theCacheJson,
-                List::class.java,
                 WxChannel::class.java
             )?.let {
                 wxChannelLV.postValue(it)
